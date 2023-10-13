@@ -1,0 +1,33 @@
+Webapp:
+—————-
+Image: richardchesterwood/k8s-fleetman-webapp-angular:release1
+Port: 80
+Env:
+	same environment variables
+
+Position Tracker:
+—————————
+Image: Richardchesterwood/k8s-fleetman-position-tracker:release1
+Port: 8080
+env:
+ - name: SPRING_PROFILES_ACTIVE
+    value:  production-microservice   
+
+API-Gateway:
+————————
+Image: Richardchesterwood/k8s-fleetman-api-gateway:release1
+Port: 8080
+Same Environment variables
+
+QUEUE:
+—————
+Image: Richardchesterwood/k8s-fleetman-queue:release1
+Port: 8161
+Endpoint Port: 61616
+
+Position Simulator:
+——————————
+Image: Richardchesterwood/k8s-fleetman-position-simulator:release1 (no service)
+env:
+ - name: SPRING_PROFILES_ACTIVE
+    value:  production-microservice
