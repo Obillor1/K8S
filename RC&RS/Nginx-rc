@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-demo-rc
+  labels:
+    app: nginx
+    type: rc-prod
+
+spec:
+  replicas: 3
+  selector:
+    app: nginx-prod
+  template:      #POD Template
+    metadata:
+      name: nginx-demo
+      labels:
+        app: nginx-prod
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27.1  #docker hub nginx
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "300Mi"
+          
