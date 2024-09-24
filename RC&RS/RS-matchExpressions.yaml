@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-demo-rc
+
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - {key: app, operator: In, values: [nginx]}
+      - {key: release, operator: NotIn, values: [v1.0, v1.1]}
+  template:      #POD Template
+    metadata:
+      name: nginx-demo
+      labels:
+        app: nginx
+        environment: production
+        release: v1.2
+    spec: 
+      containers:
+        - name: write-container
+          image: alpine
+          command: ["/bin/sh"] #Passing command by using shell
+          args: ["-c", "while true; do date >> /var/log/index.html; sleep 10; done"]
+          volumeMounts:
+            - mountPath: /var/log
+              name: shared-data
+        - name: serving-container
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: shared-data
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+            
