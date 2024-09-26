@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: demo-job
+spec:
+  ttlSecondsAfterFinished: 30    #this will delete the job and pod 30secs after it is created. This is more like an auto-cleaanup
+  #suspend: true       #means that you dont want to create the pod immediately the jobs has been created
+  #backoffLimit: 3     #this will be set prevent the job from recreating more pod
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine
+          command: ["/bin/sh"]
+          args: ["-c", "echo From k8s jobs"]
+      restartPolicy: Never
+
+            
