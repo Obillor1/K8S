@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  selector:
+    environment: production
+  ports:
+    - port: 80
+      protocol: TCP
+  type: NodePort
+
+---
+#map our nodePort
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+  selector:
+    environment: production
+  ports:
+    - port: 80
+      nodePort: 31000  #To map your cluster IP with a specific port
+      protocol: TCP
+  type: NodePort
