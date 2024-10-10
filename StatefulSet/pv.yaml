@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-pv-hp01
+  labels:
+    type: hostpath
+    environment: Dev
+spec:
+  storageClassName: hostpath
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/tmp/nginx-data01"
+    type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-pv-hp02
+  labels:
+    type: hostpath
+    environment: Dev
+spec:
+  storageClassName: hostpath
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/tmp/nginx-data02"
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-pv-hp03
+  labels:
+    type: hostpath
+    environment: Dev
+spec:
+  storageClassName: hostpath
+  capacity:
+    storage: 2Gi
+  accessModes: 
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/tmp/nginx-data03"
+    type: DirectoryOrCreate
