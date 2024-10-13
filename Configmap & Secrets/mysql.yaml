@@ -54,5 +54,53 @@ spec:
       volumes:
         - name: shared-data
           emptyDir: {}
+
+# kubectl exec -it mysql-67bbb64c9b-2vnb8 -- bash
+#mysql -hlocalhost -uroot -p  (This will get you logged into the mysql server)
+
+
+
+---
+OR - CREATING CM WITH THE PROPER KEYVALUE
+---
+#kubectl create configmap db-data --from-literal=MYSQL_ROOT_PASSWORD=password --from-literal=MYSQL_DATABASE=obillor1 --from-literal=MYSQL_USER=admin --from-literal=MYSQL_PASSWORD=password   (This would create cm in an imperative mode)
+
+#App specifying CM
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: database
+    type: mysql
+    environment: production
+
+spec:
+  selector:
+    matchLabels:
+      environment: production
+  template:
+    metadata:
+      name: mysql-demo
+      labels:
+        app: nginx
+        environment: production
+        release: v1.0
+    spec:
+      containers:
+        - name: mysql
+          image: mysql 
+          envFrom:
+            - configMapRef:
+                name: db-data        #Reference from the imperative approach of CM creation
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/html    #Directory to mount in the volume
+              name: shared-data
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+
       
             
