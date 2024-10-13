@@ -1,0 +1,58 @@
+# kubectl create configmap db-data --from-literal=mysql_root_password=password --from-literal=mysql_db_name=obillor1 --from-literal=mysql_user=admin --from-literal=mysql_user_passwd=password   (This would create cm in an imperative mode)
+
+#App
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: database
+    type: mysql
+    environment: production
+
+spec:
+  selector:
+    matchLabels:
+      environment: production
+  template:
+    metadata:
+      name: mysql-demo
+      labels:
+        app: nginx
+        environment: production
+        release: v1.0
+    spec:
+      containers:
+        - name: mysql
+          image: mysql 
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: mysql_root_password 
+                  name: db-data 
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:     #Specifying the configmap key reference in the imperative cmmd
+                  key: mysql_db_name
+                  name: db-data
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: mysql_user 
+                  name: db-data
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: mysql_user_passwd 
+                  name: db-data
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/html    #Directory to mount in the volume
+              name: shared-data
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+      
+            
