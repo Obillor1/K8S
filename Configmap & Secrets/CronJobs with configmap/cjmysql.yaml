@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mysql-db-backup
+spec:
+  concurrencyPolicy: Allow
+  schedule: "*/1 * * * * "  #This will modify every 2 minute, hour, day, month & week
+  jobTemplate:
+    spec:
+      #ttlSecondsAfterFinished: 30
+      template:
+        spec:
+          containers:
+          - name: mysql
+            image: mysql
+            command: ["/bin/sh", "-c", "bash /tmp/mysql_backup_script.sh && ls -l /var/tmp"]
+            volumeMounts:
+            - name: db-backup
+              mountPath: /var/tmp
+            - name: db-script
+              mountPath: /tmp
+          volumes:
+          - name: db-backup
+            hostPath:
+              path: /var/tmp/db_backups
+              type: DirectoryOrCreate
+          - name: db-script
+            configMap:
+              name: db-backup-script
+              items:
+              - key: db_backup.sh
+                path: mysql_backup_script.sh
+          restartPolicy: OnFailure
+~
