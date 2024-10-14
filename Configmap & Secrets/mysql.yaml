@@ -1,7 +1,7 @@
 # kubectl create configmap db-data --from-literal=mysql_root_password=password --from-literal=mysql_db_name=obillor1 --from-literal=mysql_user=admin --from-literal=mysql_user_passwd=password   (This would create cm in an imperative mode)
 
 #App
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
