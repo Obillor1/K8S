@@ -8,3 +8,5 @@ data:
     echo "BackUp was Initialized..."
     mysqldump -hmysql-db.default -uroot -ppassword --all-databases > /var/tmp/db_backup.sql
     echo "backup task was successfull..."
+#immutable: true  (Immutable parameter would make sure that when you modify values in the configmap by using kubectl edit cm db_script.yaml, it will present you with an error)
+
