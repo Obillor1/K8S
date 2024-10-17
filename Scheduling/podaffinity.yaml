@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy02
+  labels:
+    app: nginx
+    environment: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: production
+  template:      #POD Template
+    metadata:
+      name: nginx-demo2
+      labels:
+        app: nginx
+        environment: production
+        release: v1.2
+    spec: 
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: in
+                      values:
+                      - nginx-01
+                topologyKey: topology.kubernetes.io/hostname
+              weight: 1
+      containers:
+        - name: write-container
+          image: alpine
+          command: ["/bin/sh"] #Passing command by using shell
+          args: ["-c", "while true; do date >> /var/log/index.html; sleep 10; done"]
+          volumeMounts:
+            - mountPath: /var/log
+              name: shared-data
+        - name: serving-container
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: shared-data
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+            
