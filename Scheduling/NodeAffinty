@@ -28,7 +28,7 @@ spec:
             nodeSelectorTerms:
               - matchExpressions:
                   - key: node-type
-                    operator: In 
+                    operator: In   #NotIn operator is known as antiAffinity
                     values:
                       - webapp01
                       - webapp02
