@@ -1,0 +1,52 @@
+#Node Affinity. Label your nodes with kubectl label node controlnode node-type=webapp01 && kubectl label node computeplane node-type=webapp02
+#Since node affinity supports multiple key value pair each scheduled pods will be assigned to any of the labels under value. (This will take effect once you delete the pods).
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    app: nginx
+    environment: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: production
+  template:      #POD Template
+    metadata:
+      name: nginx-demo
+      labels:
+        app: nginx
+        environment: production
+        release: v1.2
+    spec: 
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-type
+                    operator: In 
+                    values:
+                      - webapp01
+                      - webapp02
+      containers:
+        - name: write-container
+          image: alpine
+          command: ["/bin/sh"] #Passing command by using shell
+          args: ["-c", "while true; do date >> /var/log/index.html; sleep 10; done"]
+          volumeMounts:
+            - mountPath: /var/log
+              name: shared-data
+        - name: serving-container
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: shared-data
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+    
