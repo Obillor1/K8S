@@ -1,0 +1,30 @@
+#kubectl taint node controlplanenode type=master:NoSchedule
+# This will schedule the pods on the controlnode
+#
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-demo
+spec:
+  # nodeName: controlnode
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-type
+            operator: In
+            values:
+            - webapp01
+  tolerations:
+  - key: "type" 
+    operator: "Equal" #or Exists
+    effect: NoSchedule
+    value: master
+
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 1000"]
