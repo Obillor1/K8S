@@ -1,0 +1,15 @@
+#when you exec in this, you wont be able to communicate with pod1 since the pod labels does not match what we have in the NetPol
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ugo-demo
+  namespace: destination
+  labels:
+    app: nginx-dst
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
