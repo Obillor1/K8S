@@ -17,3 +17,32 @@ spec:
     ports:
     - port: 80
       protocol: TCP
+
+---
+#This will apply the policy to the namespace with label type=monitoring
+#Create the third pod and add to the monitor namespace
+# In the Monitor ns apply thelabel; type=monitoring with  ---- kubectl label namespace monitor type=monitoring
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pod-traffic-source
+  namespace: source
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx-src
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: nginx
+    - namespaceSelector:
+        matchLabels:
+          type: monitoring
+    ports:
+    - port: 80
+      protocol: TCP
+
