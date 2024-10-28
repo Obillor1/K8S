@@ -1,0 +1,16 @@
+#Network policy pod selector will apply ingress to this po.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: osondu
+  namespace: source
+  labels:
+    app: nginx-src
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
