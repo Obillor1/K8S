@@ -1,4 +1,4 @@
-#Network policy pod selector will apply ingress to this po.
+#Network policy pod selector will apply ingress to this po. 
 
 apiVersion: v1
 kind: Pod
