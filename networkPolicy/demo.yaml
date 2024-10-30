@@ -46,3 +46,26 @@ spec:
     - port: 80
       protocol: TCP
 
+---
+
+---
+#egress - This allos all pods in the name space to communicate to only pos with the below cirdr range.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pod-traffic-source
+  namespace: source
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - port: 80
+      protocol: TCP
+
+
