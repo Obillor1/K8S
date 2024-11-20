@@ -1,0 +1,12 @@
+To install a network plugin, we will go with Flannel as the default choice. For inter-host communication, we will utilize the eth0 interface.
+
+
+
+Open the kube-flannel.yml file using a text editor.
+
+Locate the args section within the kube-flannel container definition. It should look like this:
+
+  args:
+  - --ip-masq
+  - --kube-subnet-mgr
+Add the additional argument - --iface=eth0 to the existing list of arguments.
