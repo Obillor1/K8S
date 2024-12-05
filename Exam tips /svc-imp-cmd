@@ -3,5 +3,6 @@
 
 #Create a Service named nginx-service of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes:
   kubectl expose pod nginx --type=NodePort --port=80 --name=nginx-service --dry-run=client -o yaml
+After creating this, go into the pod and make changes to nodePort: 30080
 
   kubectl expose pod redis --name=redis-service --port=6379
