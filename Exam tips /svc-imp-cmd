@@ -6,3 +6,9 @@
   After creating this, go into the pod and make changes to nodePort: 30080
 
   kubectl expose pod redis --name=redis-service --port=6379
+
+DNS-RESOLVER
++++++++++++++
+
+Create a pod, expose the pod internally and use a busybox image to resolve the servicename
+K run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup dns-resolver-service  (This pod will be created, it will remove it once work is done. Also do not restart the pod once its done.
