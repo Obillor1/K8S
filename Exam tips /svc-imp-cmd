@@ -25,5 +25,4 @@ OR
 kubectl get nodes -o=jsonpath="{.items[*].status.nodeInfo.osImage']}"
 
 
-
-kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'
+journalctl -u -f
