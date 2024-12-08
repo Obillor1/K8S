@@ -12,3 +12,18 @@ DNS-RESOLVER
 
 Create a pod, expose the pod internally and use a busybox image to resolve the servicename
 K run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup dns-resolver-service  (This pod will be created, it will remove it once work is done. Also do not restart the pod once its done.
+
+
+
+JSONPATH
++++++++++
+kubectl get nodes -o=jsonpath="{.items[*]['metadata.name', 'status.nodeInfo.osImage']}"
+kubectl get nodes -o=jsonpath="{.items[*]['status.nodeInfo.osImage']}"
+
+OR
+
+kubectl get nodes -o=jsonpath="{.items[*].status.nodeInfo.osImage']}"
+
+
+
+kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'
