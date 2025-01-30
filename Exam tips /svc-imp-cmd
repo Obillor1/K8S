@@ -29,3 +29,56 @@ kubectl get nodes -o=jsonpath="{.items[*].status.nodeInfo.osImage']}"
 
 
 journalctl -u -f
+
+
+The rest of them , around 5, will take up the bulk of your time.
+
+Focus areas are:
+
+Volumes -- PVs, PVCs, SCs
+
+RBAC -- know how to verify once you provision them
+
+Network Policies -- my Achilles heel
+
+Services (especially NodePorts)
+
+Upgrade a node to a target version
+
+Troubleshoot "unready" nodes:
+
+                log into the failed node
+
+                systemctl daemon-reload
+
+                systemctl restart kubelet
+
+
+
+#Option 1
+
+sudo systemctl enable kubelet --now (will enable and force start)
+
+#Option 2
+
+sudo systemctl enable kubelet
+
+sudo systemctl start kubelet
+
+Go back to the control and wait a few seconds to check the cluster health again.
+
+
+
+
+
+
+
+Monitoring and logging -- easy
+
+Sidecars -- really struggled with this one
+
+ETCD backup and restore
+
+Deployment scaling and recording
+
+Draining nodes
