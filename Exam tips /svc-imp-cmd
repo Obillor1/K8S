@@ -82,3 +82,13 @@ ETCD backup and restore
 Deployment scaling and recording
 
 Draining nodes
+
+STUDY
++++++++++
+Taint and Toleration
+HPA
+Config Map
+Side Car
+Event logs
+Ingress Controller
+Init Container
