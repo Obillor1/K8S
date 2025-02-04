@@ -47,11 +47,11 @@ Services (especially NodePorts)
 Upgrade a node to a target version
 
 Troubleshoot "unready" nodes:
-
-                log into the failed node
-
+                ssh into the node: systemctl status kubelet
+                restart kubelet and check why it didn't restart: The issue spans from a local path in the /lib/systemd... directory
+                remove the local path
+                or check - journalctl -f (to get the exact reason why kubelet isn't running) systemctl daemon-reload should be next , then restart kubectl
                 systemctl daemon-reload
-
                 systemctl restart kubelet
 
 
