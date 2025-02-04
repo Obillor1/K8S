@@ -29,6 +29,7 @@ kubectl get nodes -o=jsonpath="{.items[*].status.nodeInfo.osImage']}"
 
 
 journalctl -u -f
+Journalctl -u kubelet
 
 
 The rest of them , around 5, will take up the bulk of your time.
