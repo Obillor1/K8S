@@ -15,3 +15,8 @@ Add Jenkins user into sudoers file to get sudo access
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 vi /etc/sudoers
 jenkins ALL=(ALL) NOPASSWD: ALL
+
+# INSTALL MAVEN AND DOCKER IN JENKINS SERVER
+- Maven Integration 
+- Docker Pipeline
+
