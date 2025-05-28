@@ -1,3 +1,36 @@
 Steps
 +++++
 Setup CI with Jenkins, git, maven
+
+
+
+
+yum install wget
+
+#Run This In the/Opt Directory
++++++++++++++++++++++++++++++++
+
+wget https://mirror.lyrahosting.com/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.9.9-bin.tar.gz
+tar -xvzf apache-maven-3.9.9-bin.tar.gz
+
+TO SET ENVIRONMENT VARIALBLE FOR MVN EDIT THE .bash_profile
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+M2_HOME=/opt/apache-maven-3.9.9
+M2=/opt/apache-maven-3.9.9/bin
+
+export M2_HOME
+export M2
+
+PATH=$PATH:$M2
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+export M2_HOME=/opt/apache-maven-3.9.9
+export M2=$M2_HOME/bin
+PATH=$PATH:$M2
+# To set it permanently update your .bash_profile
+source ~/.bash_profile
+
+Validate Maven
+
+mvn version
+
+yum install git
