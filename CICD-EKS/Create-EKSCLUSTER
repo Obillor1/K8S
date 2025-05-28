@@ -1,0 +1,20 @@
+
+CREATE CLUSTER USING EKSCTL (ensure this tool is downloaded)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+eksctl create cluster --name cluster-name  \
+--region region-name \
+--node-type instance-type \
+--nodes-min 2 \
+--nodes-max 2 \ 
+--zones <AZ-1>,<AZ-2>
+
+example:
+eksctl create cluster --name osocluster \
+   --region us-east-2 \
+--node-type t2.medium 
+
+DELETE EKSCTL USING
++++++++++++++++++++
+
+eksctl delete cluster osocluster --region us-east-2
