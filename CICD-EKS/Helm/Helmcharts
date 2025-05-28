@@ -1,1 +1,6 @@
+#Helm is a toolk for Kubernetes that helps you install & manage applications
+# We use helm for repetitive task and we can do app deployment easy, standardized and it can be reusable
+#Helm is used to deploy from jenkins to Kubernetes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Attach IAM ROle to Jenkins Server
 
