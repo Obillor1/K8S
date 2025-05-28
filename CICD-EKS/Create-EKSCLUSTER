@@ -1,3 +1,5 @@
+#Ensure EKS management console is created - attach IAM role to it; (Select the EC2 >> Actions >> Security >> MODIFY IAM)
+   - Attach the policies to the IAM role - AdministratorAccessl, AmazonEC2FullAccess, AmazonVPCFullAccess, AWSCloudFormationFullAccess, IAMFullAccess 
 
 CREATE CLUSTER USING EKSCTL (ensure this tool is downloaded)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
