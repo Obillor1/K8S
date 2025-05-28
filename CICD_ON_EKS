@@ -33,4 +33,13 @@ Validate Maven
 
 mvn version
 
+
+#Install Git
++++++++++++++++
+
 yum install git
+
+# Assign Shell to Jekins USer
+
+vi /etc/passwd
+change shell from /bin/false to /bin/bash
