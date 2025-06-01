@@ -1,0 +1,13 @@
+CONNECT TO JEKINS SERVER
+++++++++++++++++++++++++
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+TEST HELM
+++++++++
+helm version
+helm list
+(Error: Kubernetes cluster unreachable: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fversion'/><script id='redirect' data-redirect-url='/login?from=%2Fversion' src='/static/9560cbf7/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+Authentication required) When you get this error, it means there are no connection between Jenkins and Kubernetes clusters.
