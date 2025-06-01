@@ -2,5 +2,8 @@
 # We use helm for repetitive task and we can do app deployment easy, standardized and it can be reusable
 #Helm is used to deploy from jenkins to Kubernetes
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Attach IAM ROle to Jenkins Server
 
+# Attach IAM ROle to Jenkins Server (EC2)
++++++++++++++++++++++++++++++++++++++++++
+#Ensure EKS management console is created - attach IAM role to it; (Select the EC2 >> Actions >> Security >> MODIFY IAM)
+   - Attach the policies to the IAM role - AdministratorAccessl, AmazonEC2FullAccess, AmazonVPCFullAccess, AWSCloudFormationFullAccess, IAMFullAccess 
