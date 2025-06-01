@@ -2,6 +2,7 @@
    - Attach the policies to the IAM role - AdministratorAccessl, AmazonEC2FullAccess, AmazonVPCFullAccess, AWSCloudFormationFullAccess, IAMFullAccess 
 
 CREATE CLUSTER USING EKSCTL (ensure this tool is downloaded)
+ - Ensure AWS CLI is installed already
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 eksctl create cluster --name cluster-name  \
