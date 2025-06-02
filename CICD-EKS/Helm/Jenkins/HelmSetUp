@@ -25,31 +25,12 @@ clusters:
     certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJQkQzb0dOckFzRmN3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TlRBMk1ERXlNek15TlROYUZ3MHpOVEExTXpBeU16TTNOVE5hTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUURFK0ZLWDRVWjJ2endRRkdVcjBpUWRmQ1JhRGdvamN1NUlMYlBPVnpCVEp4dXBKN0IrK0pvSlBTYnQKU09WcFNBSlM5OXgrTGxYL3dWMVVRY3p6cjhjanJZMmNDQzlORUcxWEJmTXdpaUtRQmJrWWJVdmpwb3BaNTR6RApLendQeER5eUdiUnBIaGI1NjhPN1hyTXBNQkgrL0dCeUY1SzBHKzl3dnlwcXJMbmFWTTRqOFdISHNOUDBxbUJjCjQ1WVE4RFRJNnZZd1pPTFg2OFlOM21KdCs1cXNUSVhvaEVCSXBkenY0c2lURi9Eam9DaFRvaGRXajVPcDlyeHUKUWQ4U1JJM2E4N0l2YlFFUkdtTTJMdW5Oc3laSnlzTExBTVkyMmhWcHVIUkxlWXdLOGthZFpCTnNSYm4yc3VYMQpSQXJBNXB1NDV3UVFmS3BiQmVjL1pRMXN6UUhSQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUU3ZVNGlLWXIwT3Y4bVFCK1FVaVAvNUx4Wm9qQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQWdTcDhjZDZ0LwpYci9mSXNLcFNBMkttY280Rm5jeTM4ZlNYWUJJUXo5YzRvLzcxdGhtdDRUMVhXV2hid1V6TXluUityMlB5TklpClp2YVY5TFFLT3VVQTd6QTY0MDZkT0cvQm1YRGcrRU01TnJ3MHRUV2U0Q2V3S3krUnBsZGdnaWZmUEg0dHRyZnQKcVkxOVQwNDRjVFd2dWlHRlN3Q0RiVEd1emlrOU01TkdxM1Q5Q1cyenp3Rzl3TndBblNZTmVaNTYweElGaVJzZgpMVWNnN1R1MDdmRmp6ZzhENTViYStUT1cvRWRIbDVubjlXejQ3R2I3anlKWXdLOXh1MStCUkN4cGNpeTFJTDZmCksyYnppcjJySmZKU3M0QlgraElhLzNRV2xOa2wwSHlSNW80Zk9VbFNLTmFzU0NXWm5GUzRwVnJNeldsemZuSSsKSlFWeHFCUnIrenB3Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
     server: https://68D7319BB097D48FE5C0712306A9A6D9.sk1.us-east-2.eks.amazonaws.com
   name: osocluster.us-east-2.eksctl.io
-contexts:
-- context:
-    cluster: osocluster.us-east-2.eksctl.io
-    user: i-039e7c2e901668459@osocluster.us-east-2.eksctl.io
-  name: i-039e7c2e901668459@osocluster.us-east-2.eksctl.io
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-current-context: arn:aws:eks:us-east-2:275254035816:cluster/osocluster
-kind: Config
-preferences: {}
-users:
-- name: i-039e7c2e901668459@osocluster.us-east-2.eksctl.io
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1beta1
-      args:
-      - eks
-      - get-token
-      - --output
-      - json
-      - --cluster-name
-      - osocluster
-      - --region
-      - us-east-2
-      command: aws
-      env:
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      provideClusterInfo: false
+HELM COMMAND
++++++++++++++
+
+# Add an Helm Repo
+# helm repo add stable https://charts.helm.sh/stable - This adds a stable helm repository
+# helm repo add
+# helm search repo <chartname>
