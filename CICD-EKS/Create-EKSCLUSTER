@@ -17,6 +17,10 @@ eksctl create cluster --name osocluster \
    --region us-east-2 \
 --node-type t2.medium 
 
+UPDATE THE KUBECONFIG FILE
+++++++++++++++++++++++++++
+aws eks update-kubeconfig --region us-east-2 --name osocluste
+
 DELETE EKSCTL USING
 +++++++++++++++++++
 
