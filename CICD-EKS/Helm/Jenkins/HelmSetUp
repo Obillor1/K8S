@@ -31,6 +31,17 @@ HELM COMMAND
 +++++++++++++
 
 # Add an Helm Repo
+# ADD A STABLE REPO
+++++++++++++++++++++++
 # helm repo add stable https://charts.helm.sh/stable - This adds a stable helm repository
+#helm search repo mysql. - this search for the repo of mysql
+# helm install repo stable/mysql
+
+#TO CUSTOMIZE YOUR CHART
+'+++++++++++++++++++++
+#helm pull stable/mysql
+# run a tar -xvzf <chartname> to unzip it >> cd mysql >> cd templates >> modify your files
+#To Modify a chart >> edit chart version >> Run helm package mysql >> it will update the chart in zip format as a new version
+
 # helm repo add
 # helm search repo <chartname>
