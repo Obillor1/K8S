@@ -45,3 +45,25 @@ HELM COMMAND
 
 # helm repo add
 # helm search repo <chartname>
+
+# DEPLOYING MSQL
+++++++++++++++++++
+#helm install mysqldatabase mysql-1.6.9.tgz < helm install <release name> zip package > 
+
+helm install my-release bitnami/mysql \
+  --set primary.persistence.storageClass=gp2 \
+  --set primary.persistence.size=8Gi
+
+# helm list  -  will list what microservices has been deployed
+
+
+
+################
+CREATING HELM CHART
+################
+
+helm create test(chartname)
+
+
+
+
