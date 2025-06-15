@@ -13,13 +13,13 @@ eksctl create cluster --name cluster-name  \
 --zones <AZ-1>,<AZ-2>
 
 example:
-eksctl create cluster --name osocluster \
+eksctl create cluster --name osoclus \
    --region us-east-2 \
 --node-type t2.medium 
 
 UPDATE THE KUBECONFIG FILE
 ++++++++++++++++++++++++++
-aws eks update-kubeconfig --region us-east-2 --name osocluster
+aws eks update-kubeconfig --region us-east-2 --name osoclus
 
 DELETE EKSCTL USING
 +++++++++++++++++++
